@@ -19,6 +19,10 @@ image:
 # imagePullSecrets:
   # - name: myRegistryKeySecretName
 
+# API group version to use in the deployment object. This allows using this
+# chart in versions of k8s with compatible versions of the apps/ API group
+deploymentApiVersion: v1beta2
+
 extraArgs:
   email-domain: "*"
   upstream: "file:///dev/null"
