@@ -30,3 +30,18 @@ Create chart name and version as used by the chart label.
 {{- define "oauth2-proxy.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
+
+{{/*
+Get the most recent version for the apps API group.
+*/}}
+{{- define "oauth2-proxy.appsAPIVersion" -}}
+{{- if .Capabilities.APIVersions.Has "apps/v1" -}}
+apps/v1
+{{- else if .Capabilities.APIVersions.Has "apps/v1beta2" -}}
+apps/v1beta2
+{{- else if .Capabilities.APIVersions.Has "apps/v1beta1" -}}
+apps/v1beta1
+{{- else -}}
+{{- required "The target cluster does not have the supported apps API version" nil }}
+{{- end -}}
+{{- end -}}

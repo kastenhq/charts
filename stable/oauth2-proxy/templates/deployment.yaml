@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta2
+apiVersion: {{ include "oauth2-proxy.appsAPIVersion" . }}
 kind: Deployment
 metadata:
   labels:
