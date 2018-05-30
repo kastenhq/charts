@@ -5,6 +5,16 @@ image:
   repository: kanisterio/controller
   tag: v0.2.0
   pullPolicy: IfNotPresent
+profile:
+  s3_verify_ssl: true
+  creds:
+    s3_api_key:
+    s3_api_secret:
+  location:
+    s3_bucket:
+    s3_endpoint:
+    s3_prefix:
+    s3_region:
 rbac:
   create: true
 serviceAccount:
