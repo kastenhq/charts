@@ -1,3 +1,4 @@
+{{- if .Values.profile.create_profile }}
 apiVersion: v1
 kind: Secret
 metadata:
@@ -10,11 +11,11 @@ data:
 apiVersion: cr.kanister.io/v1alpha1
 kind: Profile
 metadata:
-  name: {{ template "kanister-operator.fullname" . }}-profile
+  name: default-profile
 location:
   type: s3Compliant
   s3Compliant:
-    bucket: {{ required "S3 compatible bucket is required when configuring a profile." .Values.profile.location.s3_bucket |  quote }}
+    bucket: {{ required "S3 compatible bucket is required when configuring a profile." .Values.profile.location.s3_bucket | quote }}
     endpoint: {{ .Values.profile.location.s3_endpoint | quote }}
     prefix: {{ .Values.profile.location.s3_prefix | quote }}
     region: {{ .Values.profile.location.s3_region | quote }}
@@ -28,3 +29,4 @@ credential:
       kind: Secret
       name: {{ template "kanister-operator.fullname" . }}-profile-creds
 skipSSLVerify: {{ .Values.profile.s3_verify_ssl }}
+{{- end }}
