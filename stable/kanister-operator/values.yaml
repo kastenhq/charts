@@ -10,6 +10,19 @@ rbac:
 serviceAccount:
   create: true
   name:
+# Configuration for the kanister profile dependency chart
+profile:
+  create: false
+  # Configuration options for the s3 compliant profile
+  s3:
+    bucket:
+    endpoint:
+    prefix:
+    region:
+    accessKey:
+    secretKey:
+  # Option to disable SSL verification
+  verifySSL: true
 
 resources:
 # We usually recommend not to specify default resources and to leave this as a conscious
