@@ -13,16 +13,12 @@ serviceAccount:
 # Configuration for the kanister profile dependency chart
 profile:
   create: false
-  # Configuration options for the s3 compliant profile
-  s3:
-    bucket:
-    endpoint:
-    prefix:
-    region:
-    accessKey:
-    secretKey:
-  # Option to disable SSL verification
-  verifySSL: true
+  # Used to indicate whether to create a default profile
+  defaultProfile: false
+  # Profile name used when defaultProfile is true
+  defaultProfileName: default-profile
+  # If not creating a defaultProfile, should set the profile name
+  profileName:
 
 resources:
 # We usually recommend not to specify default resources and to leave this as a conscious
